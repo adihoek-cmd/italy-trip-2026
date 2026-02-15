@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⛷️ Italy Ski Trip — Feb 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy2: #162032;
+    --navy3: #1e2d3d;
+    --slate: #2a3f55;
+    --gold: #c9a84c;
+    --gold2: #e8c97a;
+    --snow: #f0f4f8;
+    --snow2: #dce6f0;
+    --ice: #a8c5da;
+    --green: #4caf81;
+    --red: #e05c5c;
+    --amber: #e8a53c;
+    --text: #e8eef4;
+    --muted: #8aa4ba;
+    --r: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(160deg, #0a1522 0%, #162032 50%, #1a2d42 100%);
+    padding: 36px 24px 28px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: -10%; right: -10%;
+    height: 80px;
+    background: rgba(201,168,76,0.04);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .mountain-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    opacity: 0.35;
+  }
+  .mtn {
+    width: 0; height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-bottom: solid var(--ice);
+  }
+  .mtn-sm { border-left-width: 18px; border-right-width: 18px; border-bottom-width: 30px; margin-top: 8px; }
+  .mtn-md { border-left-width: 28px; border-right-width: 28px; border-bottom-width: 46px; }
+  .mtn-lg { border-left-width: 38px; border-right-width: 38px; border-bottom-width: 62px; }
+  .mtn-snow::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 0;
+  }
+  .header-flag { font-size: 28px; margin-bottom: 6px; }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 900;
+    color: var(--snow);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .header-title span { color: var(--gold); }
+  .header-sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .header-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .pill {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold2);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ALERTS */
+  .alerts {
+    padding: 16px 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: var(--r);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .alert-warn { background: rgba(232,165,60,0.12); border: 1px solid rgba(232,165,60,0.3); color: #f0c570; }
+  .alert-info { background: rgba(76,175,129,0.1); border: 1px solid rgba(76,175,129,0.25); color: #7dd8a8; }
+  .alert-ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert strong { display: block; margin-bottom: 2px; font-weight: 600; }
+
+  /* TABS */
+  .tabs-wrap { position: sticky; top: 0; z-index: 100; background: var(--navy2); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 12px;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .tab:hover { color: var(--snow2); }
+  .tab.active { color: var(--gold2); border-bottom-color: var(--gold); }
+
+  /* CONTENT */
+  .content { padding: 16px; max-width: 700px; margin: 0 auto; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--r);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-head-ico { font-size: 20px; }
+  .card-head-title { font-weight: 600; font-size: 15px; flex: 1; }
+  .card-head-badge {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .badge-green { background: rgba(76,175,129,0.2); color: #7dd8a8; }
+  .badge-amber { background: rgba(232,165,60,0.2); color: #f0c570; }
+  .badge-red { background: rgba(224,92,92,0.2); color: #f08080; }
+  .badge-blue { background: rgba(100,160,220,0.2); color: #90c0e8; }
+  .card-chevron { color: var(--muted); font-size: 12px; transition: transform 0.25s; }
+  .card.open .card-chevron { transform: rotate(180deg); }
+  .card-body { display: none; padding: 0; }
+  .card.open .card-body { display: block; }
+
+  /* DATA ROWS */
+  .data-table { width: 100%; }
+  .data-row {
+    display: flex;
+    gap: 8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; min-width: 110px; padding-top: 2px; flex-shrink: 0; font-weight: 500; }
+  .data-val { font-size: 13px; color: var(--text); line-height: 1.5; font-weight: 400; flex: 1; }
+  .data-val strong { font-weight: 600; color: var(--snow); }
+  .data-val .mono { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold2); }
+  .data-val.warn { color: var(--amber); }
+  .data-val .sub { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
+
+  /* SEATS TABLE */
+  .seats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 0;
+  }
+  .seats-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    padding: 10px 16px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .seats-table td {
+    padding: 9px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+  .seats-table tr:last-child td { border-bottom: none; }
+  .seats-table td:first-child { color: var(--snow); font-weight: 500; }
+  .seats-table td { color: var(--text); }
+  .seats-table .mono { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold2); }
+  .warn-cell { color: var(--amber) !important; }
+  .tr-adi { background: rgba(100,160,220,0.04); }
+
+  /* FLIGHT HEADER */
+  .flight-hero {
+    background: linear-gradient(135deg, rgba(13,27,42,0.9), rgba(26,45,66,0.9));
+    padding: 20px 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .flight-city { text-align: center; flex: 1; }
+  .flight-city-code { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--snow); }
+  .flight-city-name { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .flight-city-time { font-family: 'DM Mono', monospace; font-size: 18px; color: var(--gold2); margin-top: 6px; font-weight: 500; }
+  .flight-city-terminal { font-size: 11px; color: var(--ice); margin-top: 2px; }
+  .flight-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+    padding: 0 8px;
+  }
+  .flight-arrow-line {
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--muted), var(--gold), var(--muted));
+    position: relative;
+  }
+  .flight-arrow-plane { font-size: 20px; }
+  .flight-arrow-duration { font-size: 11px; color: var(--muted); }
+  .flight-number-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold2);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-left: 8px;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    padding: 12px 16px 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* DRIVING */
+  .route-step {
+    display: flex;
+    gap: 14px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start;
+  }
+  .route-step:last-child { border-bottom: none; }
+  .route-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .dot-start { background: rgba(76,175,129,0.25); border: 1px solid #4caf81; }
+  .dot-mid { background: rgba(100,160,220,0.2); border: 1px solid rgba(100,160,220,0.5); }
+  .dot-end { background: rgba(201,168,76,0.2); border: 1px solid var(--gold); }
+  .route-info { flex: 1; }
+  .route-place { font-weight: 600; font-size: 14px; color: var(--snow); }
+  .route-detail { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+  .route-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    font-size: 11px;
+    padding: 2px 7px;
+    color: var(--ice);
+    margin-top: 4px;
+  }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold2);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-btn:hover { background: rgba(201,168,76,0.25); }
+
+  /* DAYS */
+  .day-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--r);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .day-header {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .day-date {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-align: center;
+    min-width: 50px;
+  }
+  .day-date-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold2); line-height: 1; }
+  .day-date-mon { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-top: 2px; }
+  .day-title { font-weight: 600; font-size: 15px; }
+  .day-subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .day-items { padding: 4px 0; }
+  .day-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    align-items: flex-start;
+  }
+  .day-item:last-child { border-bottom: none; }
+  .day-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); min-width: 40px; padding-top: 3px; }
+  .day-item-ico { font-size: 16px; flex-shrink: 0; }
+  .day-item-text { font-size: 13px; line-height: 1.5; flex: 1; }
+  .day-item-text strong { font-weight: 600; color: var(--snow); }
+  .day-item-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .day-item-warn { color: var(--amber); }
+
+  /* OVERVIEW GRID */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .ov-tile {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--r);
+    padding: 14px;
+    text-align: center;
+  }
+  .ov-tile-ico { font-size: 24px; margin-bottom: 6px; }
+  .ov-tile-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+  .ov-tile-val { font-family: 'DM Mono', monospace; font-size: 15px; color: var(--snow); font-weight: 500; }
+  .ov-tile-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  .people-row {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--r);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .people-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+  .person {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .person:last-child { border-bottom: none; }
+  .person-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .ava-adi { background: rgba(100,160,220,0.2); border: 1px solid rgba(100,160,220,0.4); }
+  .ava-verly { background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4); }
+  .ava-neil { background: rgba(76,175,129,0.2); border: 1px solid rgba(76,175,129,0.4); }
+  .ava-sol { background: rgba(180,100,180,0.2); border: 1px solid rgba(180,100,180,0.4); }
+  .person-name { font-weight: 600; font-size: 14px; }
+  .person-detail { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .person-tag { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ice); }
+
+  /* COSTS */
+  .cost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 11px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-ico { font-size: 16px; flex-shrink: 0; }
+  .cost-name { font-size: 13px; flex: 1; padding: 0 10px; }
+  .cost-amt { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold2); font-weight: 500; white-space: nowrap; }
+  .cost-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: rgba(201,168,76,0.08);
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .cost-total-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .cost-total-amt { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold2); font-weight: 700; }
+  .cost-total-sub { font-size: 10px; color: var(--muted); margin-top: 2px; text-align: right; }
+
+  /* INSURANCE */
+  .ins-coverage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 14px 16px;
+  }
+  .ins-cov-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .ins-cov-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 4px; }
+  .ins-cov-val { font-size: 13px; color: var(--snow); font-weight: 600; }
+
+  /* CONTACTS */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-info { }
+  .contact-name { font-size: 13px; font-weight: 500; }
+  .contact-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold2); margin-top: 3px; }
+  .call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(76,175,129,0.15);
+    border: 1px solid rgba(76,175,129,0.3);
+    color: #7dd8a8;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .copy-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--ice);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* UTILS */
+  .divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 0; }
+  .text-green { color: #7dd8a8; }
+  .text-amber { color: #f0c570; }
+  .text-muted { color: var(--muted); }
+  .text-gold { color: var(--gold2); }
+  .text-mono { font-family: 'DM Mono', monospace; font-size: 12px; }
+
+  @media (max-width: 480px) {
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+    .ins-coverage { grid-template-columns: 1fr; }
+    .flight-city-code { font-size: 26px; }
+    .flight-city-time { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="mountain-row">
+    <div class="mtn mtn-sm"></div>
+    <div class="mtn mtn-md"></div>
+    <div class="mtn mtn-lg"></div>
+    <div class="mtn mtn-lg"></div>
+    <div class="mtn mtn-md"></div>
+    <div class="mtn mtn-sm"></div>
+  </div>
+  <div class="header-flag">⛷️ 🇮🇱→🇮🇹</div>
+  <div class="header-title">Italy Ski Trip<br><span>Feb 2026</span></div>
+  <div class="header-sub">Ponte di Legno — Tonale</div>
+  <div class="header-pills">
+    <span class="pill">✈️ Feb 20 → Feb 27</span>
+    <span class="pill">👨‍👩‍👧‍👦 4 Travelers</span>
+    <span class="pill">🎿 6 Ski Days</span>
+    <span class="pill">🗓️ 8 Days Total</span>
+  </div>
+</div>
+
+<div class="alerts">
+  <div class="alert alert-warn">
+    <div class="alert-ico">⚠️</div>
+    <div>
+      <strong>Verly — 0PC Checked Baggage (Outbound)</strong>
+      Economy Lite on LY387 includes carry-on only. Either purchase extra baggage before Feb 20, or redistribute luggage with Adi/kids who each have 1PC.
+    </div>
+  </div>
+  <div class="alert alert-warn">
+    <div class="alert-ico">💶</div>
+    <div>
+      <strong>Ski School — Pay €360 by Feb 20</strong>
+      Payment must be made at the school upon arrival. Lessons begin Feb 22.
+    </div>
+  </div>
+  <div class="alert alert-info">
+    <div class="alert-ico">💵</div>
+    <div>
+      <strong>Via Mazzini B&B — Cash Only on arrival</strong>
+      Pre-paid via PayPal, but any extras require cash at the property.
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">📋 Overview</div>
+    <div class="tab" onclick="showTab('days')">📅 Day by Day</div>
+    <div class="tab" onclick="showTab('flights')">✈️ Flights</div>
+    <div class="tab" onclick="showTab('car')">🚗 Car & Drive</div>
+    <div class="tab" onclick="showTab('skipass')">🎿 Ski Passes</div>
+    <div class="tab" onclick="showTab('insurance')">🛡️ Insurance</div>
+    <div class="tab" onclick="showTab('contacts')">📞 Contacts</div>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div class="content section active" id="overview">
+  <div class="overview-grid">
+    <div class="ov-tile">
+      <div class="ov-tile-ico">✈️</div>
+      <div class="ov-tile-label">Departure</div>
+      <div class="ov-tile-val">Feb 20</div>
+      <div class="ov-tile-sub">TLV → MXP, 10:10</div>
+    </div>
+    <div class="ov-tile">
+      <div class="ov-tile-ico">🏠</div>
+      <div class="ov-tile-label">Return</div>
+      <div class="ov-tile-val">Feb 27</div>
+      <div class="ov-tile-sub">MXP → TLV, 09:45</div>
+    </div>
+    <div class="ov-tile">
+      <div class="ov-tile-ico">🏨</div>
+      <div class="ov-tile-label">Hotel</div>
+      <div class="ov-tile-val">6 Nights</div>
+      <div class="ov-tile-sub">Blu Hotel Acquaseria</div>
+    </div>
+    <div class="ov-tile">
+      <div class="ov-tile-ico">🎿</div>
+      <div class="ov-tile-label">Ski Days</div>
+      <div class="ov-tile-val">Feb 21–26</div>
+      <div class="ov-tile-sub">Pontedilegno–Tonale</div>
+    </div>
+  </div>
+
+  <div class="people-row">
+    <div class="people-title">Travelers</div>
+    <div class="person">
+      <div class="person-avatar ava-adi">👨</div>
+      <div>
+        <div class="person-name">Adi Hoek</div>
+        <div class="person-detail">Adult · DOB 09/12/1977 · ID 34557066</div>
+      </div>
+      <div class="person-tag">37H / 26C</div>
+    </div>
+    <div class="person">
+      <div class="person-avatar ava-verly">👩</div>
+      <div>
+        <div class="person-name">Verly Gafni Hoek</div>
+        <div class="person-detail">Adult · DOB 15/09/1981 · ID 43144179 · <span class="text-amber">0PC outbound ⚠️</span></div>
+      </div>
+      <div class="person-tag">37C / 26H</div>
+    </div>
+    <div class="person">
+      <div class="person-avatar ava-neil">👦</div>
+      <div>
+        <div class="person-name">Neil Hoek</div>
+        <div class="person-detail">Child · DOB 04/01/2016 · ID 224545640</div>
+      </div>
+      <div class="person-tag">37K / 26B</div>
+    </div>
+    <div class="person">
+      <div class="person-avatar ava-sol">👧</div>
+      <div>
+        <div class="person-name">Sol Hoek</div>
+        <div class="person-detail">Child · DOB 24/10/2018 · ID 227083714</div>
+      </div>
+      <div class="person-tag">37J / 26A</div>
+    </div>
+  </div>
+
+  <!-- Costs -->
+  <div class="card" style="display:block">
+    <div class="card-head" style="cursor:default">
+      <div class="card-head-ico">💰</div>
+      <div class="card-head-title">Trip Budget</div>
+    </div>
+    <div class="card-body" style="display:block">
+      <div class="cost-row">
+        <div class="cost-ico">✈️</div>
+        <div class="cost-name">Flights — El Al (4 pax)</div>
+        <div class="cost-amt">₪2,467.71</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🏨</div>
+        <div class="cost-name">Blu Hotel (6 nights + tax)</div>
+        <div class="cost-amt">€2,829.36</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🚗</div>
+        <div class="cost-name">Car Rental — Sicily By Car</div>
+        <div class="cost-amt">€389.77</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🎿</div>
+        <div class="cost-name">Ski Passes (6 days)</div>
+        <div class="cost-amt">€834.10</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">⛷️</div>
+        <div class="cost-name">Ski Equipment — Skiset</div>
+        <div class="cost-amt">€462.80</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🧒</div>
+        <div class="cost-name">Ski School (kids, 3 days)</div>
+        <div class="cost-amt">€360.00</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🛏️</div>
+        <div class="cost-name">Via Mazzini B&B (1 night)</div>
+        <div class="cost-amt">€111.50</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-ico">🛡️</div>
+        <div class="cost-name">Travel Insurance — Harel</div>
+        <div class="cost-amt">$286.24</div>
+      </div>
+      <div class="cost-total-row">
+        <div>
+          <div class="cost-total-label">EUR Total</div>
+          <div class="cost-total-sub">excl. flights & insurance</div>
+        </div>
+        <div>
+          <div class="cost-total-amt">€4,987.53</div>
+          <div class="cost-total-sub text-muted">+ ₪2,467 flights · + $286 insurance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DAY BY DAY ===== -->
+<div class="content section" id="days">
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">20</div><div class="day-date-mon">FRI</div></div>
+      <div><div class="day-title">✈️ Departure Day</div><div class="day-subtitle">Tel Aviv → Milan Malpensa</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">~7:00</div><div class="day-item-ico">🚗</div><div class="day-item-text"><strong>Drive to Ben Gurion Airport</strong><div class="day-item-note">Allow 90+ min before boarding</div></div></div>
+      <div class="day-item"><div class="day-time">10:10</div><div class="day-item-ico">✈️</div><div class="day-item-text"><strong>El Al LY387 departs TLV Terminal 3</strong><div class="day-item-note">Seats: Adi 37H · Verly 37C · Neil 37K · Sol 37J</div></div></div>
+      <div class="day-item"><div class="day-time">13:25</div><div class="day-item-ico">🛬</div><div class="day-item-text"><strong>Arrive MXP Terminal 1</strong><div class="day-item-note">Local time (CET = TLV −1h)</div></div></div>
+      <div class="day-item"><div class="day-time">~14:00</div><div class="day-item-ico">🚗</div><div class="day-item-text"><strong>Collect rental car — Sicily By Car, T1</strong><div class="day-item-note">Counter in Arrivals · Booking ref: check car tab</div></div></div>
+      <div class="day-item"><div class="day-time">~14:30</div><div class="day-item-ico">🛣️</div><div class="day-item-text"><strong>Drive MXP → Ponte di Legno</strong><div class="day-item-note">~160 km · ~2h 30m via A8/A35/A4 + SS42</div></div></div>
+      <div class="day-item"><div class="day-time">~17:00</div><div class="day-item-ico">🏨</div><div class="day-item-text"><strong>Check-in: Blu Hotel Acquaseria</strong><div class="day-item-note">Ponte di Legno · CC at hotel · €30 city tax in cash</div></div></div>
+      <div class="day-item"><div class="day-time">Eve</div><div class="day-item-ico">🧒</div><div class="day-item-text"><strong class="day-item-warn">Pay Ski School — €360 (due today)</strong><div class="day-item-note">Pay at school before Feb 22 lessons start</div></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">21</div><div class="day-date-mon">SAT</div></div>
+      <div><div class="day-title">🎿 Ski Day 1</div><div class="day-subtitle">Pick up passes + equipment + first runs</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">Morn</div><div class="day-item-ico">📲</div><div class="day-item-text"><strong>Collect ski passes</strong><div class="day-item-note">Go to resort collection point · Bring QR code + ID</div></div></div>
+      <div class="day-item"><div class="day-time">Morn</div><div class="day-item-ico">🥾</div><div class="day-item-text"><strong>Pick up ski equipment — Skiset</strong><div class="day-item-note">Pre-paid · 4 sets of equipment</div></div></div>
+      <div class="day-item"><div class="day-time">All day</div><div class="day-item-ico">⛷️</div><div class="day-item-text"><strong>Pontedilegno–Tonale Ski Area</strong><div class="day-item-note">100+ km pistes · Passo del Tonale at 3,000 m</div></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">22</div><div class="day-date-mon">SUN</div></div>
+      <div><div class="day-title">🎿 Ski Day 2 + School</div><div class="day-subtitle">First day of kids' ski lessons</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">Morn</div><div class="day-item-ico">🧒</div><div class="day-item-text"><strong>Ski school begins for kids</strong><div class="day-item-note">Private lessons · 3 days total (22, 23, 24 or as scheduled)</div></div></div>
+      <div class="day-item"><div class="day-time">All day</div><div class="day-item-ico">⛷️</div><div class="day-item-text"><strong>Skiing for adults while kids in school</strong></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">23–25</div><div class="day-date-mon">MON–WED</div></div>
+      <div><div class="day-title">🎿 Ski Days 3–5</div><div class="day-subtitle">Full days on the slopes</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">All day</div><div class="day-item-ico">⛷️</div><div class="day-item-text"><strong>Skiing — Pontedilegno–Tonale</strong><div class="day-item-note">Passes valid 21–26 Feb · Winter sports insurance active</div></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">26</div><div class="day-date-mon">THU</div></div>
+      <div><div class="day-title">🎿 Ski Day 6 (Last)</div><div class="day-subtitle">Return equipment + pack up</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">All day</div><div class="day-item-ico">⛷️</div><div class="day-item-text"><strong>Last ski day</strong><div class="day-item-note">Passes expire today</div></div></div>
+      <div class="day-item"><div class="day-time">Eve</div><div class="day-item-ico">🥾</div><div class="day-item-text"><strong>Return ski equipment to Skiset</strong></div></div>
+      <div class="day-item"><div class="day-time">Eve</div><div class="day-item-ico">🧳</div><div class="day-item-text"><strong>Pack up + check out prep</strong><div class="day-item-note">Early departure tomorrow — set alarm!</div></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-date"><div class="day-date-num">27</div><div class="day-date-mon">FRI</div></div>
+      <div><div class="day-title">🏠 Return Day</div><div class="day-subtitle">⚠️ Early start — 09:45 flight</div></div>
+    </div>
+    <div class="day-items">
+      <div class="day-item"><div class="day-time">~04:45</div><div class="day-item-ico">⏰</div><div class="day-item-text"><strong class="day-item-warn">Wake up — very early departure!</strong><div class="day-item-note">~2h30 drive to MXP + car return + check-in</div></div></div>
+      <div class="day-item"><div class="day-time">~05:15</div><div class="day-item-ico">🏨</div><div class="day-item-text"><strong>Check out of Blu Hotel</strong></div></div>
+      <div class="day-item"><div class="day-time">~05:30</div><div class="day-item-ico">🛣️</div><div class="day-item-text"><strong>Drive Ponte di Legno → MXP</strong><div class="day-item-note">~160 km · ~2h30m · Arrive by ~08:00</div></div></div>
+      <div class="day-item"><div class="day-time">~08:00</div><div class="day-item-ico">🚗</div><div class="day-item-text"><strong>Return car — Sicily By Car, T1</strong><div class="day-item-note">Return at T1 Arrivals car rental area</div></div></div>
+      <div class="day-item"><div class="day-time">~08:15</div><div class="day-item-ico">🛂</div><div class="day-item-text"><strong>Check in + Security, MXP T1</strong><div class="day-item-note">El Al may require additional check-in time — allow extra</div></div></div>
+      <div class="day-item"><div class="day-time">09:45</div><div class="day-item-ico">✈️</div><div class="day-item-text"><strong>El Al LY382 departs MXP → TLV</strong><div class="day-item-note">Seats: Adi 26C · Verly 26H · Neil 26B · Sol 26A</div></div></div>
+      <div class="day-item"><div class="day-time">14:30</div><div class="day-item-ico">🛬</div><div class="day-item-text"><strong>Arrive TLV Terminal 3</strong></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== FLIGHTS ===== -->
+<div class="content section" id="flights">
+
+  <!-- Outbound -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🛫</div>
+      <div class="card-head-title">Outbound · Fri Feb 20<span class="flight-number-badge">LY387</span></div>
+      <div class="card-head-badge badge-green">✅ OK</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="flight-hero">
+        <div class="flight-city">
+          <div class="flight-city-code">TLV</div>
+          <div class="flight-city-name">Tel Aviv</div>
+          <div class="flight-city-time">10:10</div>
+          <div class="flight-city-terminal">Terminal 3</div>
+        </div>
+        <div class="flight-arrow">
+          <div class="flight-arrow-plane">✈️</div>
+          <div class="flight-arrow-line"></div>
+          <div class="flight-arrow-duration">4h 15m</div>
+        </div>
+        <div class="flight-city">
+          <div class="flight-city-code">MXP</div>
+          <div class="flight-city-name">Milan Malpensa</div>
+          <div class="flight-city-time">13:25</div>
+          <div class="flight-city-terminal">Terminal 1</div>
+        </div>
+      </div>
+      <div class="section-label">Seats & Baggage</div>
+      <table class="seats-table">
+        <tr><th>Passenger</th><th>Seat</th><th>Baggage</th><th>Ticket</th></tr>
+        <tr class="tr-adi">
+          <td>👨 Adi</td>
+          <td class="mono">37H</td>
+          <td class="text-green">✅ 1PC</td>
+          <td class="mono">..671944</td>
+        </tr>
+        <tr>
+          <td>👩 Verly</td>
+          <td class="mono">37C</td>
+          <td class="warn-cell">⚠️ 0PC!</td>
+          <td class="mono">..671971</td>
+        </tr>
+        <tr>
+          <td>👦 Neil</td>
+          <td class="mono">37K</td>
+          <td class="text-green">✅ 1PC</td>
+          <td class="mono">..671946</td>
+        </tr>
+        <tr>
+          <td>👧 Sol</td>
+          <td class="mono">37J</td>
+          <td class="text-green">✅ 1PC</td>
+          <td class="mono">..671945</td>
+        </tr>
+      </table>
+      <div class="section-label">Booking Refs</div>
+      <div class="data-row">
+        <div class="data-label">Adi + Kids</div>
+        <div class="data-val"><span class="mono">Y5JWJ6</span> <span class="sub">Invoice 25768187 · ₪1,858.30</span></div>
+      </div>
+      <div class="data-row">
+        <div class="data-label">Verly</div>
+        <div class="data-val"><span class="mono">Y5NZ69</span> <span class="sub">Invoice 25767673 · ₪609.41</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Return -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🛬</div>
+      <div class="card-head-title">Return · Fri Feb 27<span class="flight-number-badge">LY382</span></div>
+      <div class="card-head-badge badge-green">✅ OK</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="flight-hero">
+        <div class="flight-city">
+          <div class="flight-city-code">MXP</div>
+          <div class="flight-city-name">Milan Malpensa</div>
+          <div class="flight-city-time">09:45</div>
+          <div class="flight-city-terminal">Terminal 1</div>
+        </div>
+        <div class="flight-arrow">
+          <div class="flight-arrow-plane">✈️</div>
+          <div class="flight-arrow-line"></div>
+          <div class="flight-arrow-duration">3h 45m</div>
+        </div>
+        <div class="flight-city">
+          <div class="flight-city-code">TLV</div>
+          <div class="flight-city-name">Tel Aviv</div>
+          <div class="flight-city-time">14:30</div>
+          <div class="flight-city-terminal">Terminal 3</div>
+        </div>
+      </div>
+      <div class="section-label">Seats & Baggage</div>
+      <table class="seats-table">
+        <tr><th>Passenger</th><th>Seat</th><th>Baggage</th><th>Class</th></tr>
+        <tr class="tr-adi">
+          <td>👨 Adi</td>
+          <td class="mono">26C</td>
+          <td class="text-green">✅ 1PC</td>
+          <td>Economy</td>
+        </tr>
+        <tr>
+          <td>👩 Verly</td>
+          <td class="mono">26H</td>
+          <td class="text-green">✅ 1PC</td>
+          <td>Economy</td>
+        </tr>
+        <tr>
+          <td>👦 Neil</td>
+          <td class="mono">26B</td>
+          <td class="text-green">✅ 1PC</td>
+          <td>Economy</td>
+        </tr>
+        <tr>
+          <td>👧 Sol</td>
+          <td class="mono">26A</td>
+          <td class="text-green">✅ 1PC</td>
+          <td>Economy</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Matmid Points -->
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">⭐</div>
+      <div class="card-head-title">Matmid Points Earned</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Adi</div><div class="data-val"><span class="mono">38,700 pts</span> + USD 192.27</div></div>
+      <div class="data-row"><div class="data-label">Neil</div><div class="data-val"><span class="mono">34,800 pts</span> + USD 183.67</div></div>
+      <div class="data-row"><div class="data-label">Sol</div><div class="data-val"><span class="mono">34,800 pts</span> + USD 183.67</div></div>
+      <div class="data-row"><div class="data-label">Verly</div><div class="data-val"><span class="mono">20,713 pts</span> + USD 183.52</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CAR & DRIVING ===== -->
+<div class="content section" id="car">
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🚗</div>
+      <div class="card-head-title">Car Rental — Sicily By Car</div>
+      <div class="card-head-badge badge-green">✅ Pre-paid</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Pickup</div><div class="data-val"><strong>MXP Terminal 1</strong><span class="sub">Arrivals hall car rental counter — Feb 20 after landing</span></div></div>
+      <div class="data-row"><div class="data-label">Return</div><div class="data-val"><strong>MXP Terminal 1</strong><span class="sub">Return before 09:45 flight on Feb 27 — must be back by ~08:00!</span></div></div>
+      <div class="data-row"><div class="data-label">Duration</div><div class="data-val">7 days</div></div>
+      <div class="data-row"><div class="data-label">Total</div><div class="data-val text-gold"><span class="mono">€389.77</span> — paid via Booking.com</div></div>
+      <div class="data-row"><div class="data-label">Booking via</div><div class="data-val">Booking.com</div></div>
+    </div>
+  </div>
+
+  <!-- Drive 1: MXP to Ponte di Legno -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🛣️</div>
+      <div class="card-head-title">Drive · MXP → Ponte di Legno</div>
+      <div class="card-head-badge badge-blue">Feb 20 · ~2h30</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="route-step">
+        <div class="route-dot dot-start">🛬</div>
+        <div class="route-info">
+          <div class="route-place">MXP Terminal 1</div>
+          <div class="route-detail">Collect car · Exit via SP527 heading east toward Milan</div>
+          <span class="route-tag">Start here</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-mid">🛤️</div>
+        <div class="route-info">
+          <div class="route-place">A8 / A26 Autostrada</div>
+          <div class="route-detail">Head toward Milan (A8), then join A4 toward Bergamo / Brescia · Keep on A4 east ~70 km</div>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-mid">⛽</div>
+        <div class="route-info">
+          <div class="route-place">Brescia / Darfo area</div>
+          <div class="route-detail">Exit toward Darfo Boario Terme · Join SS42 heading north into the mountains</div>
+          <span class="route-tag">~1h from MXP</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-mid">🏔️</div>
+        <div class="route-info">
+          <div class="route-place">SS42 — Valle Camonica</div>
+          <div class="route-detail">Scenic mountain road through Edolo · Follow signs for Ponte di Legno / Tonale</div>
+          <span class="route-tag">~40 min from Darfo</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-end">🏨</div>
+        <div class="route-info">
+          <div class="route-place">Ponte di Legno</div>
+          <div class="route-detail">Village centre · Blu Hotel Acquaseria</div>
+          <span class="route-tag">~2h30m total</span>
+        </div>
+      </div>
+      <a class="nav-btn" href="https://maps.google.com?saddr=Milan+Malpensa+Airport&daddr=Ponte+di+Legno,+Italy" target="_blank">
+        🗺️ Open in Google Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- Drive 2: Return -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🔄</div>
+      <div class="card-head-title">Return Drive · Ponte di Legno → MXP</div>
+      <div class="card-head-badge badge-amber">Feb 27 · Depart 05:15!</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-warn" style="margin: 12px 16px 4px; border-radius: 8px;">
+        <div class="alert-ico">⚠️</div>
+        <div>Flight is <strong>09:45</strong> · Must return car by <strong>~08:00</strong> · Depart hotel no later than <strong>05:15</strong></div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-start">⏰</div>
+        <div class="route-info">
+          <div class="route-place">Blu Hotel — Check out</div>
+          <div class="route-detail">Wake up ~04:45 · Check out and load car</div>
+          <span class="route-tag">05:15 latest depart</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-mid">🏔️</div>
+        <div class="route-info">
+          <div class="route-place">SS42 → Darfo → A4</div>
+          <div class="route-detail">Same route in reverse · Quiet roads at this hour · Allow extra 15 min for mountain road conditions</div>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-mid">🚗</div>
+        <div class="route-info">
+          <div class="route-place">Sicily By Car Return — MXP T1</div>
+          <div class="route-detail">Return keys at T1 counter · Get receipt · Allow 30 min buffer</div>
+          <span class="route-tag">~08:00 target</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-dot dot-end">✈️</div>
+        <div class="route-info">
+          <div class="route-place">MXP Terminal 1 — Check-in & Security</div>
+          <div class="route-detail">El Al check-in · Security · Gate · Allow extra time for El Al security checks</div>
+          <span class="route-tag">08:15–09:15</span>
+        </div>
+      </div>
+      <a class="nav-btn" href="https://maps.google.com?saddr=Ponte+di+Legno,+Italy&daddr=Milan+Malpensa+Airport" target="_blank">
+        🗺️ Open in Google Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- Hotel info -->
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🏨</div>
+      <div class="card-head-title">Blu Hotel Acquaseria</div>
+      <div class="card-head-badge badge-blue">Feb 20–26</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Location</div><div class="data-val"><strong>Ponte di Legno</strong>, Brescia, Italy</div></div>
+      <div class="data-row"><div class="data-label">Dates</div><div class="data-val">Feb 20 (check-in) → Feb 26 (check-out)</div></div>
+      <div class="data-row"><div class="data-label">Duration</div><div class="data-val">6 nights, B&B</div></div>
+      <div class="data-row"><div class="data-label">Cost</div><div class="data-val"><span class="mono text-gold">€2,799.36</span> — pay at hotel by CC</div></div>
+      <div class="data-row"><div class="data-label">City Tax</div><div class="data-val warn"><span class="mono">€30.00</span> — bring CASH 💵</div></div>
+      <a class="nav-btn" href="https://maps.google.com?q=Blu+Hotel+Acquaseria+Ponte+di+Legno" target="_blank">
+        🗺️ Find on Maps
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== SKI PASSES ===== -->
+<div class="content section" id="skipass">
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🎿</div>
+      <div class="card-head-title">Ski Passes — Pontedilegno-Tonale</div>
+      <div class="card-head-badge badge-green">✅ Paid · NON-REFUNDABLE</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Order #</div><div class="data-val"><span class="mono">2605-PGFFNO</span></div></div>
+      <div class="data-row"><div class="data-label">Valid</div><div class="data-val"><strong>Feb 21 – 26, 2026</strong> (6 days)</div></div>
+      <div class="data-row"><div class="data-label">Total</div><div class="data-val"><span class="mono text-gold">€834.10</span> — paid Google Pay</div></div>
+      <div class="data-row"><div class="data-label">Payment</div><div class="data-val">Google Pay · NON-REFUNDABLE</div></div>
+      <div class="data-row"><div class="data-label">Booked by</div><div class="data-val">Verly Gafni</div></div>
+    </div>
+  </div>
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">📲</div>
+      <div class="card-head-title">How to Collect Your Passes</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">What to bring</div><div class="data-val"><strong>QR code from confirmation email</strong> + valid photo ID for each person</div></div>
+      <div class="data-row"><div class="data-label">Where</div><div class="data-val">Resort ticket/collection point at Pontedilegno or Tonale base station</div></div>
+      <div class="data-row"><div class="data-label">When</div><div class="data-val">Day 1 (Feb 21) before first runs · Do this before heading to lifts</div></div>
+      <div class="data-row"><div class="data-label">Note</div><div class="data-val warn">⚠️ Passes are NON-REFUNDABLE — if conditions change, no refund available</div></div>
+    </div>
+  </div>
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">📦</div>
+      <div class="card-head-title">Pass Breakdown (3 passes)</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Adult + Child</div><div class="data-val"><span class="mono">€308.75</span> · 6-day pass</div></div>
+      <div class="data-row"><div class="data-label">Junior</div><div class="data-val"><span class="mono">€216.60</span> · 6-day pass</div></div>
+      <div class="data-row"><div class="data-label">Adult</div><div class="data-val"><span class="mono">€308.75</span> · 6-day pass</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">⛷️</div>
+      <div class="card-head-title">Ski Equipment — Skiset</div>
+      <div class="card-head-badge badge-green">✅ Pre-paid</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Supplier</div><div class="data-val"><strong>Skiset</strong></div></div>
+      <div class="data-row"><div class="data-label">Equipment</div><div class="data-val">4 complete sets (skis, boots, poles)</div></div>
+      <div class="data-row"><div class="data-label">Duration</div><div class="data-val">6 days · Feb 21–26</div></div>
+      <div class="data-row"><div class="data-label">Total</div><div class="data-val"><span class="mono text-gold">€462.80</span> — pre-paid</div></div>
+      <div class="data-row"><div class="data-label">Pickup</div><div class="data-val">Skiset shop at resort — show confirmation email</div></div>
+      <div class="data-row"><div class="data-label">Return</div><div class="data-val">Feb 26 (last ski day) before close of business</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🧒</div>
+      <div class="card-head-title">Kids' Ski School</div>
+      <div class="card-head-badge badge-amber">⚠️ Pay on Arrival</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Type</div><div class="data-val">Private lessons for kids</div></div>
+      <div class="data-row"><div class="data-label">Days</div><div class="data-val">3 days · Starting Feb 22</div></div>
+      <div class="data-row"><div class="data-label">Cost</div><div class="data-val"><span class="mono text-gold">€360.00</span></div></div>
+      <div class="data-row"><div class="data-label">Payment</div><div class="data-val warn">⚠️ <strong>Pay at school by Feb 20</strong> — in cash or card at location</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== INSURANCE ===== -->
+<div class="content section" id="insurance">
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🛡️</div>
+      <div class="card-head-title">Harel "First Class Passport"</div>
+      <div class="card-head-badge badge-green">✅ Active</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Policy #</div><div class="data-val"><span class="mono">765629337425</span></div></div>
+      <div class="data-row"><div class="data-label">Plan</div><div class="data-val">First Class Passport — Plan 501</div></div>
+      <div class="data-row"><div class="data-label">Period</div><div class="data-val"><strong>Feb 20 → Feb 27, 2026</strong> (8 days)</div></div>
+      <div class="data-row"><div class="data-label">Destination</div><div class="data-val">Europe</div></div>
+      <div class="data-row"><div class="data-label">Total Premium</div><div class="data-val"><span class="mono text-gold">$286.24 USD</span></div></div>
+      <div class="data-row"><div class="data-label">Policy Holder</div><div class="data-val">Verly Gafni Hoek · ID 43144179</div></div>
+      <div class="data-row"><div class="data-label">Issue Date</div><div class="data-val">29/10/2025</div></div>
+    </div>
+  </div>
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">📋</div>
+      <div class="card-head-title">Key Coverage</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="ins-coverage">
+        <div class="ins-cov-item"><div class="ins-cov-label">Medical / Hospital</div><div class="ins-cov-val">$5,000,000</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Emergency Dental</div><div class="ins-cov-val">$400</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Search & Rescue</div><div class="ins-cov-val">$250,000</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">3rd Party Liability</div><div class="ins-cov-val">$150,000</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Medical Flight to IL</div><div class="ins-cov-val">✅ Included</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Evacuation</div><div class="ins-cov-val">✅ Included</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Winter Sports</div><div class="ins-cov-val">✅ All 4</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">COVID-19</div><div class="ins-cov-val">✅ Covered</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Co-pay</div><div class="ins-cov-val">$0–50 / event</div></div>
+        <div class="ins-cov-item"><div class="ins-cov-label">Baggage (adults)</div><div class="ins-cov-val">✅ Adi + Verly</div></div>
+      </div>
+      <div class="data-row" style="border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="data-label">Winter Sports</div>
+        <div class="data-val text-green">✅ ALL 4 members · Feb 21–26 · Marked slopes only · During official hours</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">👥</div>
+      <div class="card-head-title">Insured Persons</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <table class="seats-table">
+        <tr><th>Name</th><th>Premium</th><th>Skiing</th><th>Baggage</th></tr>
+        <tr><td>👨 Adi Hoek</td><td class="mono">$73.12</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>👩 Verly Gafni Hoek</td><td class="mono">$73.12</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>👦 Neil Hoek</td><td class="mono">$70.00</td><td class="text-green">✅</td><td class="text-muted">—</td></tr>
+        <tr><td>👧 Sol Hoek</td><td class="mono">$70.00</td><td class="text-green">✅</td><td class="text-muted">—</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CONTACTS ===== -->
+<div class="content section" id="contacts">
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🆘</div>
+      <div class="card-head-title">Harel Insurance — 24/7 Emergency</div>
+      <div class="card-head-badge badge-red">EMERGENCY</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">📞 Emergency Phone</div>
+          <div class="contact-num">+972-3-754-7030</div>
+        </div>
+        <a class="call-btn" href="tel:+97237547030">📞 Call</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">💬 WhatsApp</div>
+          <div class="contact-num">+972-52-754-4589</div>
+        </div>
+        <a class="call-btn" href="https://wa.me/97252754458" target="_blank">💬 WhatsApp</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">📠 Fax</div>
+          <div class="contact-num">+972-3-734-8168</div>
+        </div>
+        <span class="copy-btn" onclick="navigator.clipboard.writeText('+97237348168')">Copy</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">Policy #</div>
+          <div class="contact-num">765629337425</div>
+        </div>
+        <span class="copy-btn" onclick="navigator.clipboard.writeText('765629337425')">Copy</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🇮🇹</div>
+      <div class="card-head-title">Italian Emergency Numbers</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">🚑 Ambulance / Emergency</div>
+          <div class="contact-num">118</div>
+        </div>
+        <a class="call-btn" href="tel:118">📞 118</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">🚔 Police (Carabinieri)</div>
+          <div class="contact-num">112</div>
+        </div>
+        <a class="call-btn" href="tel:112">📞 112</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">🏔️ Mountain Rescue (Soccorso Alpino)</div>
+          <div class="contact-num">118 or 800 319 319</div>
+        </div>
+        <a class="call-btn" href="tel:118">📞 118</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">🔥 Fire</div>
+          <div class="contact-num">115</div>
+        </div>
+        <a class="call-btn" href="tel:115">📞 115</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">🇪🇺 EU Emergency</div>
+          <div class="contact-num">112</div>
+        </div>
+        <a class="call-btn" href="tel:112">📞 112</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">✈️</div>
+      <div class="card-head-title">El Al & Bookings</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">El Al — Booking Y5JWJ6 (Adi + Kids)</div>
+          <div class="contact-num">elal.com · Manage booking</div>
+        </div>
+        <span class="copy-btn" onclick="navigator.clipboard.writeText('Y5JWJ6')">Y5JWJ6</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">El Al — Booking Y5NZ69 (Verly)</div>
+          <div class="contact-num">elal.com · Manage booking</div>
+        </div>
+        <span class="copy-btn" onclick="navigator.clipboard.writeText('Y5NZ69')">Y5NZ69</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-info">
+          <div class="contact-name">Ski Pass Order</div>
+          <div class="contact-num">2605-PGFFNO</div>
+        </div>
+        <span class="copy-btn" onclick="navigator.clipboard.writeText('2605-PGFFNO')">Copy</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleCard(head) {
+    const card = head.parentElement;
+    card.classList.toggle('open');
+  }
+
+  // Auto-open all cards on load
+  document.querySelectorAll('.card').forEach(card => {
+    if (!card.classList.contains('open')) {
+      const head = card.querySelector('.card-head');
+      if (head) head.addEventListener('click', function() { toggleCard(this); });
+    } else {
+      const head = card.querySelector('.card-head');
+      if (head) head.addEventListener('click', function() { toggleCard(this); });
+    }
+  });
+</script>
+</body>
+</html>
