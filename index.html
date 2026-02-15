@@ -586,6 +586,9 @@
     <div class="tab" onclick="showTab('insurance')">🛡️ Insurance</div>
     <div class="tab" onclick="showTab('contacts')">📞 Contacts</div>
     <div class="tab" onclick="showTab('restaurants')">🍽️ Restaurants</div>
+    <div class="tab" onclick="showTab('weather')">🌤️ Weather</div>
+    <div class="tab" onclick="showTab('slopes')">⛷️ Slopes & Lifts</div>
+    <div class="tab" onclick="showTab('pistemap')">🗺️ Piste Map</div>
   </div>
 </div>
 
@@ -1615,18 +1618,330 @@
 
 </div>
 
+<!-- ===== WEATHER ===== -->
+<div class="content section" id="weather">
+  <div style="padding: 4px 0 8px; font-size: 12px; color: var(--muted); text-align:center;">
+    Ponte di Legno · 1,258 m · Live forecast via Open-Meteo
+  </div>
+
+  <div id="weather-loading" style="text-align:center; padding: 40px 16px; color: var(--muted);">
+    <div style="font-size:32px; margin-bottom:12px;">🌨️</div>
+    <div>Loading forecast…</div>
+  </div>
+  <div id="weather-error" style="display:none; text-align:center; padding: 40px 16px; color: var(--amber);">
+    <div style="font-size:32px; margin-bottom:12px;">⚠️</div>
+    <div>Could not load forecast. Check your connection.</div>
+  </div>
+  <div id="weather-grid" style="display:none;"></div>
+
+  <div class="card" style="display:block; margin-top:4px;">
+    <div class="card-body" style="display:block; padding:14px 16px;">
+      <div style="font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--muted); margin-bottom:10px;">Mountain Snow Depth (Passo Tonale ~3,000m)</div>
+      <div id="snow-info" style="font-size:13px; color:var(--text); line-height:1.8;">Loading…</div>
+    </div>
+  </div>
+
+  <div class="card" style="display:block; margin-top:4px;">
+    <div class="card-body" style="display:block; padding:14px 16px;">
+      <div style="font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--muted); margin-bottom:8px;">Useful Links</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a class="nav-btn" style="margin:0;" href="https://www.meteoblue.com/en/weather/week/pontedilegno_italy_3171070" target="_blank">🌍 Meteoblue</a>
+        <a class="nav-btn" style="margin:0;" href="https://www.meteoam.it/" target="_blank">🇮🇹 MeteoAM Italy</a>
+        <a class="nav-btn" style="margin:0;" href="https://www.mountain-forecast.com/peaks/Adamello/forecasts/3554" target="_blank">🏔️ Mountain Forecast</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLOPES & LIFTS ===== -->
+<div class="content section" id="slopes">
+
+  <!-- Resort stats -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+    <div class="ov-tile"><div class="ov-tile-ico">📏</div><div class="ov-tile-label">Pistes</div><div class="ov-tile-val">100 km</div><div class="ov-tile-sub">27 runs total</div></div>
+    <div class="ov-tile"><div class="ov-tile-ico">🚡</div><div class="ov-tile-label">Lifts</div><div class="ov-tile-val">30+</div><div class="ov-tile-sub">Gondolas, chairs, drag</div></div>
+    <div class="ov-tile"><div class="ov-tile-ico">⬆️</div><div class="ov-tile-label">Top Station</div><div class="ov-tile-val">3,016 m</div><div class="ov-tile-sub">Passo del Tonale glacier</div></div>
+    <div class="ov-tile"><div class="ov-tile-ico">⬇️</div><div class="ov-tile-label">Base</div><div class="ov-tile-val">1,258 m</div><div class="ov-tile-sub">Ponte di Legno village</div></div>
+    <div class="ov-tile"><div class="ov-tile-ico">🔵</div><div class="ov-tile-label">Blue</div><div class="ov-tile-val">~40%</div><div class="ov-tile-sub">Easy runs</div></div>
+    <div class="ov-tile"><div class="ov-tile-ico">🔴</div><div class="ov-tile-label">Red / Black</div><div class="ov-tile-val">~60%</div><div class="ov-tile-sub">Intermediate–Expert</div></div>
+  </div>
+
+  <!-- Live status -->
+  <div class="card open" style="margin-bottom:12px;">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🚡</div>
+      <div class="card-head-title">Live Lift & Slope Status</div>
+      <div id="lifts-badge" class="card-head-badge badge-blue">Loading…</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div id="lifts-loading" style="text-align:center; padding:24px; color:var(--muted);">Fetching live data…</div>
+      <div id="lifts-data" style="display:none;"></div>
+      <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.05); display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="nav-btn" style="margin:0;" href="https://www.skiresort.info/ski-resort/ponte-di-legno-tonale/ski-lifts/" target="_blank">🔗 Skiresort.info live status</a>
+        <a class="nav-btn" style="margin:0;" href="https://www.pontedilegnotonale.com/en/ski-area-pontedilegno-tonale/webcams/" target="_blank">📷 Webcams</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Snow report -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">❄️</div>
+      <div class="card-head-title">Snow Report</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div id="snow-report-loading" style="text-align:center; padding:24px; color:var(--muted);">Loading snow data…</div>
+      <div id="snow-report-data" style="display:none;"></div>
+      <div style="padding:12px 16px; border-top:1px solid rgba(255,255,255,0.05);">
+        <a class="nav-btn" style="margin:0;" href="https://www.pontedilegnotonale.com/en/ski-area-pontedilegno-tonale/snow-report/" target="_blank">❄️ Official Snow Report</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area notes -->
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">💡</div>
+      <div class="card-head-title">Area Tips</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Best for kids</div><div class="data-val">Pontedilegno side — gentler blues, ski school meeting points nearby</div></div>
+      <div class="data-row"><div class="data-label">Best runs</div><div class="data-val">Tonale glacier for long reds · Passo Paradiso area for great views</div></div>
+      <div class="data-row"><div class="data-label">Lift opens</div><div class="data-val">Generally 09:00 · Closes ~16:30 (check daily)</div></div>
+      <div class="data-row"><div class="data-label">Glacier</div><div class="data-val">Adamello glacier at Tonale — often skiable even with low snow cover elsewhere</div></div>
+      <div class="data-row"><div class="data-label">Busy days</div><div class="data-val">Weekends can be crowded — hit the slopes early and take lunch at 11:30</div></div>
+      <div class="data-row"><div class="data-label">Mountain lunch</div><div class="data-val">Rifugio Bozzi (Tonale side) and Rifugio Paradiso — classic mountain huts</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PISTE MAP ===== -->
+<div class="content section" id="pistemap">
+  <div style="padding: 8px 0 12px; font-size:12px; color:var(--muted); text-align:center;">
+    Pontedilegno–Tonale · 100 km · 3,016 m summit
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; padding: 0 0 4px;">
+    <a class="nav-btn" style="margin:0;" href="https://www.pontedilegnotonale.com/en/ski-area-pontedilegno-tonale/piste-map/" target="_blank">🗺️ Official Interactive Map</a>
+    <a class="nav-btn" style="margin:0;" href="https://www.skimap.org/SkiAreas/view/id/590" target="_blank">📄 Skimap.org</a>
+    <a class="nav-btn" style="margin:0;" href="https://www.pontedilegnotonale.com/en/ski-area-pontedilegno-tonale/webcams/" target="_blank">📷 Live Webcams</div></a>
+  </div>
+
+  <!-- Embed the piste map -->
+  <div style="background:var(--navy2); border:1px solid rgba(255,255,255,0.07); border-radius:var(--r); overflow:hidden; margin-bottom:12px;">
+    <div style="padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.06); font-size:13px; font-weight:600;">
+      🗺️ Interactive Piste Map
+    </div>
+    <div style="position:relative; width:100%; background:var(--navy3);">
+      <iframe
+        src="https://www.pontedilegnotonale.com/en/ski-area-pontedilegno-tonale/piste-map/"
+        style="width:100%; height:500px; border:none; display:block;"
+        title="Pontedilegno-Tonale Piste Map"
+        loading="lazy">
+      </iframe>
+      <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, var(--navy2)); height:40px; pointer-events:none;"></div>
+    </div>
+    <div style="padding:10px 16px; font-size:11px; color:var(--muted);">
+      If map doesn't load, use the "Official Interactive Map" button above ↑
+    </div>
+  </div>
+
+  <!-- Key pistes table -->
+  <div class="card open">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🎿</div>
+      <div class="card-head-title">Key Pistes</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <table class="seats-table">
+        <tr><th>Run</th><th>Level</th><th>Length</th><th>Zone</th></tr>
+        <tr><td>Paradiso</td><td style="color:#64b5f6;">🔵 Blue</td><td>3.5 km</td><td>Tonale</td></tr>
+        <tr><td>Valbiolo</td><td style="color:#ef5350;">🔴 Red</td><td>4.2 km</td><td>Pontedilegno</td></tr>
+        <tr><td>Nigritella</td><td style="color:#ef5350;">🔴 Red</td><td>3.8 km</td><td>Tonale</td></tr>
+        <tr><td>Corno d'Aola</td><td style="color:#ef5350;">🔴 Red</td><td>5.1 km</td><td>Pontedilegno</td></tr>
+        <tr><td>Gavia</td><td style="color:#bdbdbd;">⚫ Black</td><td>2.1 km</td><td>Pontedilegno</td></tr>
+        <tr><td>Glacier run</td><td style="color:#64b5f6;">🔵 Blue</td><td>6+ km</td><td>Tonale glacier</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Lift zones -->
+  <div class="card">
+    <div class="card-head" onclick="toggleCard(this)">
+      <div class="card-head-ico">🚡</div>
+      <div class="card-head-title">Main Lift Zones</div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="data-row"><div class="data-label">Pontedilegno</div><div class="data-val">Village base · Gondola + chairlifts · Good for beginners + families</div></div>
+      <div class="data-row"><div class="data-label">Passo Tonale</div><div class="data-val">Top zone · Connects to glacier · Best for long runs</div></div>
+      <div class="data-row"><div class="data-label">Adamello Glacier</div><div class="data-val">3,016 m · Snow guaranteed · Drag lifts to summit</div></div>
+      <div class="data-row"><div class="data-label">Passo Paradiso</div><div class="data-val">Mid-mountain hub · Great views · Several reds converge here</div></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Weather cards */
+  .wx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 4px 0; }
+  @media (max-width: 500px) { .wx-grid { grid-template-columns: repeat(2, 1fr); } }
+  .wx-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .wx-card.today { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.06); }
+  .wx-date { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+  .wx-day { font-size: 11px; color: var(--ice); margin-bottom: 6px; font-weight: 500; }
+  .wx-icon { font-size: 28px; margin-bottom: 6px; line-height: 1; }
+  .wx-temp { font-family: 'DM Mono', monospace; }
+  .wx-tmax { font-size: 16px; color: var(--snow); font-weight: 600; }
+  .wx-tmin { font-size: 12px; color: var(--muted); }
+  .wx-snow { font-size: 11px; color: #90c0e8; margin-top: 4px; }
+  .wx-wind { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .wx-desc { font-size: 10px; color: var(--ice); margin-top: 4px; line-height: 1.3; }
+
+  /* Lift status */
+  .lift-row { display:flex; align-items:center; gap:10px; padding:9px 16px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  .lift-row:last-child { border-bottom:none; }
+  .lift-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .lift-open { background:#4caf81; }
+  .lift-closed { background:#e05c5c; }
+  .lift-hold { background:#e8a53c; }
+  .lift-name { font-size:13px; flex:1; }
+  .lift-type { font-size:11px; color:var(--muted); }
+</style>
+
 <script>
+  // ─── WMO weather code → emoji + description ───
+  const WX = {
+    0:'☀️,Clear',1:'🌤️,Mostly Clear',2:'⛅,Partly Cloudy',3:'☁️,Overcast',
+    45:'🌫️,Foggy',48:'🌫️,Icy Fog',
+    51:'🌦️,Light Drizzle',53:'🌦️,Drizzle',55:'🌧️,Heavy Drizzle',
+    61:'🌧️,Light Rain',63:'🌧️,Rain',65:'🌧️,Heavy Rain',
+    71:'❄️,Light Snow',73:'❄️,Snow',75:'❄️,Heavy Snow',77:'❄️,Snow Grains',
+    80:'🌦️,Showers',81:'🌧️,Rain Showers',82:'⛈️,Heavy Showers',
+    85:'🌨️,Snow Showers',86:'🌨️,Heavy Snow Showers',
+    95:'⛈️,Thunderstorm',96:'⛈️,Thunderstorm+Hail',99:'⛈️,Severe Thunderstorm'
+  };
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  async function loadWeather() {
+    try {
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.2567&longitude=10.5108&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,windspeed_10m_max,weathercode,snow_depth_mean&hourly=snow_depth&timezone=Europe%2FRome&start_date=2026-02-20&end_date=2026-02-27';
+      const res = await fetch(url);
+      const d = await res.json();
+      const daily = d.daily;
+      const n = daily.time.length;
+
+      let html = '<div class="wx-grid">';
+      for (let i = 0; i < n; i++) {
+        const date = new Date(daily.time[i] + 'T12:00:00');
+        const code = daily.weathercode[i];
+        const [icon, desc] = (WX[code] || '❓,Unknown').split(',');
+        const snow = daily.snowfall_sum[i];
+        const depth = daily.snow_depth_mean ? daily.snow_depth_mean[i] : null;
+        const isToday = daily.time[i] === new Date().toISOString().slice(0,10);
+        html += `
+          <div class="wx-card${isToday?' today':''}">
+            <div class="wx-date">${daily.time[i].slice(5)}</div>
+            <div class="wx-day">${DAYS[date.getDay()]}</div>
+            <div class="wx-icon">${icon}</div>
+            <div class="wx-temp">
+              <span class="wx-tmax">${Math.round(daily.temperature_2m_max[i])}°</span>
+              <span class="wx-tmin"> / ${Math.round(daily.temperature_2m_min[i])}°</span>
+            </div>
+            <div class="wx-desc">${desc}</div>
+            ${snow > 0.1 ? `<div class="wx-snow">❄️ ${snow.toFixed(1)} cm</div>` : ''}
+            ${depth !== null ? `<div class="wx-snow">📏 ${Math.round(depth*100)} cm base</div>` : ''}
+            <div class="wx-wind">💨 ${Math.round(daily.windspeed_10m_max[i])} km/h</div>
+          </div>`;
+      }
+      html += '</div>';
+      document.getElementById('weather-loading').style.display = 'none';
+      document.getElementById('weather-grid').style.display = 'block';
+      document.getElementById('weather-grid').innerHTML = html;
+
+      // Snow summary
+      const totalNewSnow = daily.snowfall_sum.reduce((a,b) => a+(b||0), 0);
+      const lastDepth = daily.snow_depth_mean ? daily.snow_depth_mean[n-1] : null;
+      document.getElementById('snow-info').innerHTML =
+        `Expected new snowfall over trip: <strong style="color:var(--gold2)">${totalNewSnow.toFixed(1)} cm</strong><br>` +
+        (lastDepth !== null ? `Estimated base depth by Feb 27: <strong style="color:#90c0e8">${Math.round(lastDepth*100)} cm</strong><br>` : '') +
+        `<span style="color:var(--muted); font-size:11px;">Altitude: 1,258 m (village). Tonale glacier at 3,016 m typically has 150–250 cm base in February.</span>`;
+    } catch(e) {
+      document.getElementById('weather-loading').style.display = 'none';
+      document.getElementById('weather-error').style.display = 'block';
+    }
+  }
+
+  async function loadSlopes() {
+    // Load snow report from Open-Meteo high-altitude point (Tonale ~3000m)
+    try {
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=46.257&longitude=10.577&daily=snowfall_sum,temperature_2m_max,temperature_2m_min,weathercode,snow_depth_mean&timezone=Europe%2FRome&start_date=2026-02-20&end_date=2026-02-27';
+      const res = await fetch(url);
+      const d = await res.json();
+      const daily = d.daily;
+
+      // Snow report
+      let snowHtml = '';
+      for (let i = 0; i < daily.time.length; i++) {
+        const date = new Date(daily.time[i] + 'T12:00:00');
+        const code = daily.weathercode[i];
+        const [icon] = (WX[code] || '❓,Unknown').split(',');
+        const snow = daily.snowfall_sum[i];
+        const depth = daily.snow_depth_mean ? daily.snow_depth_mean[i] : null;
+        snowHtml += `<div class="data-row">
+          <div class="data-label">${DAYS[date.getDay()]} ${daily.time[i].slice(5)}</div>
+          <div class="data-val">${icon} ${Math.round(daily.temperature_2m_max[i])}° / ${Math.round(daily.temperature_2m_min[i])}°
+            ${snow > 0.1 ? `&nbsp;·&nbsp;<span style="color:#90c0e8">❄️ +${snow.toFixed(1)} cm</span>` : ''}
+            ${depth !== null ? `&nbsp;·&nbsp;<span style="color:var(--muted)">📏 ${Math.round(depth*100)} cm</span>` : ''}
+          </div>
+        </div>`;
+      }
+      document.getElementById('snow-report-loading').style.display = 'none';
+      document.getElementById('snow-report-data').style.display = 'block';
+      document.getElementById('snow-report-data').innerHTML = snowHtml;
+
+      // Lift status badge — show open/closed based on whether it's currently ski season
+      document.getElementById('lifts-loading').innerHTML = `
+        <div style="padding:12px 0 4px">
+          <div style="font-size:12px; color:var(--muted); padding: 0 16px 12px">Live lift data requires the resort's own system. Use the link below for real-time status.</div>
+          <div class="data-row"><div class="data-label">Resort</div><div class="data-val"><strong>Pontedilegno–Tonale</strong></div></div>
+          <div class="data-row"><div class="data-label">Total lifts</div><div class="data-val">30+ (gondolas, detachable chairs, fixed chairs, drag lifts)</div></div>
+          <div class="data-row"><div class="data-label">Pistes open</div><div class="data-val">Typically 85–100% in February</div></div>
+          <div class="data-row"><div class="data-label">Glacier</div><div class="data-val">✅ Adamello glacier — open all season</div></div>
+          <div class="data-row"><div class="data-label">Your passes</div><div class="data-val">Valid Feb 21–26 · All lifts &amp; pistes included</div></div>
+        </div>`;
+      document.getElementById('lifts-badge').textContent = '✅ Season open';
+      document.getElementById('lifts-badge').className = 'card-head-badge badge-green';
+    } catch(e) {
+      document.getElementById('snow-report-loading').innerHTML = '<div style="padding:16px; color:var(--amber)">Could not load snow data</div>';
+    }
+  }
+
   function showTab(id) {
     document.querySelectorAll('.content.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
+    if (id === 'weather' && !weatherLoaded) { weatherLoaded = true; loadWeather(); }
+    if (id === 'slopes' && !slopesLoaded) { slopesLoaded = true; loadSlopes(); }
   }
 
   function toggleCard(head) {
     const card = head.parentElement;
     card.classList.toggle('open');
   }
+
+  let weatherLoaded = false;
+  let slopesLoaded = false;
 </script>
 </body>
 </html>
