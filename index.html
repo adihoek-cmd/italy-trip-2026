@@ -585,6 +585,7 @@
     <div class="tab" onclick="showTab('skipass')">🎿 Ski Passes</div>
     <div class="tab" onclick="showTab('insurance')">🛡️ Insurance</div>
     <div class="tab" onclick="showTab('contacts')">📞 Contacts</div>
+    <div class="tab" onclick="showTab('restaurants')">🍽️ Restaurants</div>
   </div>
 </div>
 
@@ -1132,6 +1133,8 @@
     </div>
   </div>
 
+</div>
+
 <!-- ===== SKI PASSES ===== -->
 <div class="content section" id="skipass">
 
@@ -1398,9 +1401,223 @@
 
 </div>
 
+<!-- ===== RESTAURANTS ===== -->
+<div class="content section" id="restaurants">
+
+  <div class="card" style="background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.2); display:block;">
+    <div class="card-body" style="display:block; padding: 14px 16px;">
+      <div style="font-size:12px; color: var(--muted); line-height:1.6;">
+        🇮🇹 Ponte di Legno is a mountain village — reserve ahead, especially on weekends. Most restaurants close between lunch and dinner (typically 14:30–19:00). Typical dishes: <em>pizzoccheri, casoncelli, polenta concia, canederli, goulash</em>.
+      </div>
+    </div>
+  </div>
+
+  <!-- REST CARD STYLES inline for restaurant cards -->
+  <style>
+    .rest-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r); margin-bottom: 12px; overflow: hidden; }
+    .rest-head { padding: 14px 16px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .rest-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--snow); }
+    .rest-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .rest-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+    .tag-cuisine { background: rgba(100,160,220,0.15); color: #90c0e8; }
+    .tag-price { background: rgba(201,168,76,0.15); color: var(--gold2); }
+    .tag-vibe { background: rgba(76,175,129,0.12); color: #7dd8a8; }
+    .tag-kids { background: rgba(180,100,180,0.15); color: #d0a0d0; }
+    .rest-body { padding: 12px 16px; }
+    .rest-desc { font-size: 13px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+    .rest-meta { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+    .rest-meta-row { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; }
+    .rest-meta-label { color: var(--muted); min-width: 70px; flex-shrink: 0; }
+    .rest-meta-val { color: var(--text); }
+    .rest-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .rest-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; padding: 7px 12px; border-radius: 7px; text-decoration: none; cursor: pointer; }
+    .btn-maps { background: rgba(100,160,220,0.15); border: 1px solid rgba(100,160,220,0.3); color: #90c0e8; }
+    .btn-ta { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); color: var(--gold2); }
+    .rest-rank { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-left: 8px; }
+  </style>
+
+  <!-- 1. Ristorante Frigidolfo -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">Ristorante Frigidolfo <span class="rest-rank">⭐ Top pick</span></div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Mountain Italian</span>
+        <span class="rest-tag tag-price">€€</span>
+        <span class="rest-tag tag-vibe">Cozy & local</span>
+        <span class="rest-tag tag-kids">👧 Family OK</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">The most beloved local spot in Ponte di Legno. Chef Sergio's kitchen is the real deal — <em>pizzoccheri</em>, ribs with honey, <em>polenta concia</em>, and a legendary panna cotta. Entirely local ingredients, no shortcuts. Book ahead, it fills up fast.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Must try</span><span class="rest-meta-val">Pizzoccheri · Polenta concia · Panna cotta</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Tip</span><span class="rest-meta-val">Reserve a table — only a few inside</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=Ristorante+Frigidolfo+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+        <a class="rest-btn btn-ta" href="https://www.tripadvisor.com/Restaurant_Review-g194852-d3502013-Reviews-Ristorante_Frigidolfo-Ponte_di_Legno.html" target="_blank">⭐ TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. El Volt -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">El Volt</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Alpine / Contemporary</span>
+        <span class="rest-tag tag-price">€€€</span>
+        <span class="rest-tag tag-vibe">Romantic & refined</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">Housed in a stunning old building of wood, stone, and iron. Updated takes on Lombard mountain classics, with an impressive wine cellar of local and international bottles. The most upscale dinner option in the village — great for a special evening out.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Address</span><span class="rest-meta-val">Via G. Sora 19, Ponte di Legno</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Phone</span><span class="rest-meta-val"><a href="tel:+390364092050" style="color:var(--gold2);">+39 0364 92050</a></span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Must try</span><span class="rest-meta-val">Seasonal tasting menu · Local wine pairings</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=El+Volt+Ponte+di+Legno+Via+G+Sora+19" target="_blank">🗺️ Maps</a>
+        <a class="rest-btn btn-ta" href="https://www.tripadvisor.com/Restaurant_Review-g194852-d1153824-Reviews-El_Volt-Ponte_di_Legno.html" target="_blank">⭐ TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Al Tabià -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">Ristorante Al Tabià</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Grilled meats · Pizza</span>
+        <span class="rest-tag tag-price">€€</span>
+        <span class="rest-tag tag-vibe">Intimate & rustic</span>
+        <span class="rest-tag tag-kids">👧 Family OK</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">A cozy, intimate restaurant with soft mountain atmosphere. Famous for its perfectly grilled meats and au gratin dishes from the wood oven. All desserts homemade. Pizza available at lunch — ideal after a morning on the slopes.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Address</span><span class="rest-meta-val">Via S. Antonio 3, Ponte di Legno</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Phone</span><span class="rest-meta-val"><a href="tel:+390364091406" style="color:var(--gold2);">+39 0364 91406</a></span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Must try</span><span class="rest-meta-val">Grilled meats · Wood-oven au gratin · Tiramisu</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Tip</span><span class="rest-meta-val">Pizza only at lunch — dinner is à la carte</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=Ristorante+Al+Tabia+Via+S+Antonio+3+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+        <a class="rest-btn btn-ta" href="https://www.tripadvisor.com/Restaurant_Review-g194852-d2057252-Reviews-Ristorante_Al_Tabia-Ponte_di_Legno.html" target="_blank">⭐ TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Tre Archi -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">Tre Archi</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Italian · Mediterranean</span>
+        <span class="rest-tag tag-price">€€</span>
+        <span class="rest-tag tag-vibe">Village favourite</span>
+        <span class="rest-tag tag-kids">👧 Family OK</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">One of the most reviewed restaurants in the village (400+ TripAdvisor reviews). Great value — the <em>menu turistico</em> includes starter, pasta, and main for €20 a head. Friendly atmosphere, central location, solid Italian classics.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Must try</span><span class="rest-meta-val">Menu turistico · Fresh pasta · Lasagne</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Tip</span><span class="rest-meta-val">Best value dinner in the village</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=Tre+Archi+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+        <a class="rest-btn btn-ta" href="https://www.tripadvisor.com/Restaurant_Review-g194852-d3667782-Reviews-Tre_Archi-Ponte_di_Legno.html" target="_blank">⭐ TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. KRO -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">KRO</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Creative Mountain</span>
+        <span class="rest-tag tag-price">€€€</span>
+        <span class="rest-tag tag-vibe">Passionate & modern</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">Research-driven kitchen with deep respect for the mountain region. The chef takes traditional Camuno cuisine and explores new directions without losing authenticity. A more modern dining experience — perfect if you want something beyond the classic trattoria.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Must try</span><span class="rest-meta-val">Chef's seasonal tasting menu</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Tip</span><span class="rest-meta-val">Reserve ahead — small creative menu changes regularly</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=KRO+Ristorante+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+        <a class="rest-btn btn-ta" href="https://www.tripadvisor.com/Restaurants-g194852-Ponte_di_Legno_Province_of_Brescia_Lombardy.html" target="_blank">⭐ TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. La Pergola (ski slope) -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">La Pergola</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Pizza · Mountain food</span>
+        <span class="rest-tag tag-price">€€</span>
+        <span class="rest-tag tag-vibe">On the slopes · Casual</span>
+        <span class="rest-tag tag-kids">👧 Kids love it</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">Right next to the ski slopes — the perfect lunch stop on the mountain. Traditional first courses, fish and meat mains, and a full pizza menu. Convenient, casual, great for refueling mid-ski-day with the kids.</div>
+      <div class="rest-meta">
+        <div class="rest-meta-row"><span class="rest-meta-label">Address</span><span class="rest-meta-val">Via Corno d'Aola 17, Ponte di Legno</span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Phone</span><span class="rest-meta-val"><a href="tel:+393293376344" style="color:var(--gold2);">+39 329 337 6344</a></span></div>
+        <div class="rest-meta-row"><span class="rest-meta-label">Best for</span><span class="rest-meta-val">Ski-day lunch · Pizza with the kids</span></div>
+      </div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=La+Pergola+Via+Corno+d+Aola+17+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Crema e Neve (gelato) -->
+  <div class="rest-card">
+    <div class="rest-head">
+      <div class="rest-name">Crema e Neve 🍦</div>
+      <div class="rest-tags">
+        <span class="rest-tag tag-cuisine">Gelato</span>
+        <span class="rest-tag tag-price">€</span>
+        <span class="rest-tag tag-vibe">Quick stop</span>
+        <span class="rest-tag tag-kids">👧 Kids' favourite</span>
+      </div>
+    </div>
+    <div class="rest-body">
+      <div class="rest-desc">Rated 4.5 ⭐ — the village gelato spot. Non-negotiable after a day on the slopes. Small, local, and very good.</div>
+      <div class="rest-links">
+        <a class="rest-btn btn-maps" href="https://maps.google.com?q=Crema+e+Neve+Ponte+di+Legno" target="_blank">🗺️ Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local dishes tip -->
+  <div class="card" style="display:block; margin-bottom: 20px;">
+    <div class="card-body" style="display:block;">
+      <div class="section-label" style="border:none; padding-top:14px;">🍽️ Must-Try Local Dishes</div>
+      <div class="data-row"><div class="data-label">Pizzoccheri</div><div class="data-val">Buckwheat pasta with cabbage, potato & melted cheese — the Alpine classic</div></div>
+      <div class="data-row"><div class="data-label">Polenta concia</div><div class="data-val">Creamy polenta loaded with butter & local cheese — pure mountain fuel</div></div>
+      <div class="data-row"><div class="data-label">Casoncelli</div><div class="data-val">Stuffed pasta from Bergamo — often with butter & sage or meat ragù</div></div>
+      <div class="data-row"><div class="data-label">Canederli</div><div class="data-val">Bread dumplings in broth — Tyrolean influence, perfect après-ski</div></div>
+      <div class="data-row"><div class="data-label">Goulash</div><div class="data-val">Hungarian-influenced stew with polenta — hearty and warming</div></div>
+      <div class="data-row"><div class="data-label">Wines</div><div class="data-val">Look for Marzemino, Teroldego, or Groppello di Revò — local reds</div></div>
+    </div>
+  </div>
+
+</div>
+
 <script>
   function showTab(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.content.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
@@ -1410,17 +1627,6 @@
     const card = head.parentElement;
     card.classList.toggle('open');
   }
-
-  // Auto-open all cards on load
-  document.querySelectorAll('.card').forEach(card => {
-    if (!card.classList.contains('open')) {
-      const head = card.querySelector('.card-head');
-      if (head) head.addEventListener('click', function() { toggleCard(this); });
-    } else {
-      const head = card.querySelector('.card-head');
-      if (head) head.addEventListener('click', function() { toggleCard(this); });
-    }
-  });
 </script>
 </body>
 </html>
