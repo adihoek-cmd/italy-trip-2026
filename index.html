@@ -532,6 +532,13 @@
 </head>
 <body>
 
+<script>
+  // Check authentication
+  if (sessionStorage.getItem('authenticated') !== 'true') {
+    window.location.href = 'auth.html';
+  }
+</script>
+
 <div class="header">
   <div class="mountain-row">
     <div class="mtn mtn-sm"></div>
